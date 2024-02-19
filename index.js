@@ -1,0 +1,197 @@
+
+//Buy Ticket buttom
+document.addEventListener('DOMContentLoaded', function () {
+    const bannerBtn = document.getElementById('banner-btn');
+    const phPoribahan = document.getElementById('ph-poribahan');
+
+    bannerBtn.addEventListener('click', function () {
+        phPoribahan.scrollIntoView();
+    });
+});
+
+
+
+function setInnerText(id, value){
+    document.getElementById(id).innerText = value;
+}
+
+
+const cards = document.querySelectorAll(".card");
+
+let count = 0;
+let totalPrice = 0;
+
+for(let i = 0; i < cards.length; i++){
+    const card = cards[i];
+
+    card.addEventListener("click", function(){
+        count = count + 1;
+
+        /*get the seat Number*/
+        const title = card.querySelector("h3").innerText;
+
+        const titleContainer = document.getElementById("title-container");
+
+        const p = document.createElement("p");
+        p.innerText = title;
+
+        titleContainer.appendChild(p);
+
+        const TicketPrice = parseFloat(document.getElementById("ticket-price").innerText.split(" ")[0]) ;
+
+
+
+        /* Calculate price */
+        totalPrice +=  TicketPrice;
+
+
+        document.getElementById("totalPrice").innerText = totalPrice;
+
+
+        setInnerText("count", count)
+    })
+}
+
+
+
+
+
+
+const btn = document.getElementById("apply-btn");
+
+btn.addEventListener("click", function(){
+    
+
+    /*get the value from input*/
+    const couponElement = document.getElementById("input-field").value;
+    const couponCode = couponElement.split(" ").join("").toUpperCase();
+    if(totalPrice >= 2200){
+        if(couponCode === "NEW15" || "couple20"){
+
+            document.getElementById("apply-div").classList.add("hidden");
+            btn.classList.add("hidden");
+            
+
+            /* Discount Calculate*/
+            const discountElement = document.getElementById("discountPrice");
+            const discountAmount = totalPrice * 0.15;
+            discountElement.innerText = discountAmount;
+
+            /*Total Calculate*/
+            const grandTotal = document.getElementById("total");
+            grandTotal.innerText = totalPrice - discountAmount;
+
+            /*Clear input field*/
+            document.getElementById("input-field").value = " ";
+        }
+        else{
+            alert("Invalid Coupon Code");
+            document.getElementById("input-field").value = " ";
+        }
+    }
+    else{
+        alert("Please at least buy 4 tickets");
+        document.getElementById("input-field").value = " ";
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
