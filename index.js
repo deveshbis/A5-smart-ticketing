@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function setInnerText(id, value){
+function setInnerText(id, value) {
     document.getElementById(id).innerText = value;
 }
 
@@ -21,10 +21,10 @@ const cards = document.querySelectorAll(".card");
 let count = 0;
 let totalPrice = 0;
 
-for(let i = 0; i < cards.length; i++){
+for (let i = 0; i < cards.length; i++) {
     const card = cards[i];
 
-    card.addEventListener("click", function(){
+    card.addEventListener("click", function () {
         count = count + 1;
 
         /*get the seat Number*/
@@ -37,12 +37,12 @@ for(let i = 0; i < cards.length; i++){
 
         titleContainer.appendChild(p);
 
-        const TicketPrice = parseFloat(document.getElementById("ticket-price").innerText.split(" ")[0]) ;
+        const TicketPrice = parseFloat(document.getElementById("ticket-price").innerText.split(" ")[0]);
 
 
 
         /* Calculate price */
-        totalPrice +=  TicketPrice;
+        totalPrice += TicketPrice;
 
 
         document.getElementById("totalPrice").innerText = totalPrice;
@@ -59,18 +59,18 @@ for(let i = 0; i < cards.length; i++){
 
 const btn = document.getElementById("apply-btn");
 
-btn.addEventListener("click", function(){
-    
+btn.addEventListener("click", function () {
+
 
     /*get the value from input*/
     const couponElement = document.getElementById("input-field").value;
     const couponCode = couponElement.split(" ").join("").toUpperCase();
-    if(totalPrice >= 2200){
-        if(couponCode === "NEW15" || "couple20"){
+    if (totalPrice >= 2200) {
+        if (couponCode === "NEW15" || couponCode === "Couple20") {
 
             document.getElementById("apply-div").classList.add("hidden");
             btn.classList.add("hidden");
-            
+
 
             /* Discount Calculate*/
             const discountElement = document.getElementById("discountPrice");
@@ -84,12 +84,12 @@ btn.addEventListener("click", function(){
             /*Clear input field*/
             document.getElementById("input-field").value = " ";
         }
-        else{
+        else {
             alert("Invalid Coupon Code");
             document.getElementById("input-field").value = " ";
         }
     }
-    else{
+    else {
         alert("Please at least buy 4 tickets");
         document.getElementById("input-field").value = " ";
     }
@@ -99,6 +99,14 @@ btn.addEventListener("click", function(){
 
 
 
+ /* Button background color set*/
+for (let i = 1; i <= 40; i++) {
+    const btn = document.getElementById(`btn${i}`);
+
+    btn.addEventListener('click', function () {
+        btn.classList.toggle('bg-green-500');
+    });
+}
 
 
 
