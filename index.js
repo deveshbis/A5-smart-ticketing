@@ -14,8 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
 function setInnerText(id, value) {
     document.getElementById(id).innerText = value;
 }
+/*---------------------------------------------------------------*/
 
 
+
+
+
+
+
+
+/*-----------------------------------------------------*/
 const cards = document.querySelectorAll(".card");
 
 let count = 0;
@@ -32,10 +40,31 @@ for (let i = 0; i < cards.length; i++) {
 
         const titleContainer = document.getElementById("title-container");
 
+        const economy = document.getElementById("class-eco").innerText;
+
+        const TicketTag = parseFloat(document.getElementById("ticket-price").innerText.split(" ")[0]);
+
         const p = document.createElement("p");
         p.innerText = title;
 
+        const p2 = document.createElement("p");
+        p2.innerText = economy;
+
+        const p3 = document.createElement("p");
+        p3.innerText = TicketTag;
+
         titleContainer.appendChild(p);
+        titleContainer.appendChild(p2);
+        titleContainer.appendChild(p3);
+
+        const countLeft = document.getElementById("negative").innerText;
+
+        const convertNumber = parseInt(countLeft);
+            if (convertNumber - 1 < 0) {
+                alert("Not Selected any seat")
+                return;
+            }
+        document.getElementById("negative").innerText = convertNumber - 1;
 
         const TicketPrice = parseFloat(document.getElementById("ticket-price").innerText.split(" ")[0]);
 
@@ -99,7 +128,7 @@ btn.addEventListener("click", function () {
 
 
 
- /* Button background color set*/
+/* Button background color set*/
 for (let i = 1; i <= 40; i++) {
     const btn = document.getElementById(`btn${i}`);
 
