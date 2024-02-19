@@ -66,6 +66,15 @@ for (let i = 0; i < cards.length; i++) {
         }
         document.getElementById("negative").innerText = convertNumber - 1;
 
+        const seatBtnselected = document.querySelectorAll('.card');
+        const selectedText = document.getElementById('section-id');
+
+        seatBtnselected.forEach(function (buttonSel) {
+            buttonSel.addEventListener('click', function () {
+                selectedText.classList.add('bg-green-500', 'text-white');
+            });
+        });
+
 
 
         const TicketPrice = parseFloat(document.getElementById("ticket-price").innerText.split(" ")[0]);
