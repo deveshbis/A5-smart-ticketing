@@ -60,11 +60,13 @@ for (let i = 0; i < cards.length; i++) {
         const countLeft = document.getElementById("negative").innerText;
 
         const convertNumber = parseInt(countLeft);
-            if (convertNumber - 1 < 0) {
-                alert("Not Selected any seat")
-                return;
-            }
+        if (convertNumber - 1 < 0) {
+            alert("Not Selected any seat")
+            return;
+        }
         document.getElementById("negative").innerText = convertNumber - 1;
+
+
 
         const TicketPrice = parseFloat(document.getElementById("ticket-price").innerText.split(" ")[0]);
 
@@ -146,6 +148,18 @@ for (let i = 1; i <= 40; i++) {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    const seatCardBtn = document.querySelectorAll('.card');
+    const selectedText = document.getElementById('section-id"');
+
+
+
+    seatCardBtn.addEventListener('click', function () {
+
+        selectedText.classList.add('bg-green-500', 'text-white');
+    });
+});
 
 
 
